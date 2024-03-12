@@ -1,14 +1,64 @@
-const catPictures = new Promise((resolve,reject)=>{
-    setTimeout(() => {
-        resolve('sekiller goturuldu') 
-    }, 2000);
-}).then(picture=>console.log(picture))
+//1
 
-const pictures = async() => {
-    const message = await catPictures   //await ile 2000mS bele olsa gozleyir mesaji
-    const waiting = await fetch(' https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=REPLACE_ME',{
-    method:'get'
-})          //thecatapi-dan yazdim
-.then(response=>console.log(response))}
+fetch(' https://restcountries.com/v3.1/all') 
+ 
+ .then(response=>response.json())
+ .then(result=>console.log(result))
 
-pictures()
+//2
+
+const apiTrying2 = async() => {
+    await fetch('https://www.boredapi.com/api/activity?type=recreational')
+    .then(response=>{
+        if(response.headers.aborted){
+            console.log('Aborted: False')
+        } else{
+            console.log('True')
+        }
+    })
+}
+
+
+//3
+
+
+const apiTrying3 = async() => {
+    await fetch('https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=REPLACE_ME')
+    .then(response=>{
+        if (response.status>=200 && response.status<=299){
+            console.log('OK')
+        }
+
+    })
+}
+
+
+//4
+
+
+const apiTrying4 = () => {
+    fetch('http://www.omdbapi.com/?apikey=[yourkey]&') 
+ 
+ .then(response=>response.headers)
+ .then(data=> console.log(data))
+ }
+
+ //5
+
+ 
+const apiTrying = async() => {
+    await fetch('http://simple-grocery-store-api.online/') 
+ 
+ .then(response=>console.log(`status text: ${response.statusText} json: ${response.json}`))
+ }
+
+ //6
+
+fetch('https://www.boredapi.com/api/activity?type=recreational')
+.then(response=>response.body)
+.then(result=>console.log(result))
+
+// apiTrying()
+// apiTrying2()
+// apiTrying3()
+// apiTrying4()
